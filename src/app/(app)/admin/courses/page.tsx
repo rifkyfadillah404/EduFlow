@@ -56,11 +56,11 @@ export default async function AdminCoursesPage() {
                   </td>
                   <td className="p-4">
                     {course.isPublished ? (
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-semibold bg-green-500/10 text-green-600 border border-green-500/30">
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-semibold bg-[var(--success)]/10 text-[var(--success)] border border-[var(--success)]/30">
                         Published
                       </span>
                     ) : (
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-semibold bg-yellow-500/10 text-yellow-600 border border-yellow-500/30">
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-semibold bg-[var(--warning)]/10 text-[var(--warning)] border border-[var(--warning)]/30">
                         Draft
                       </span>
                     )}

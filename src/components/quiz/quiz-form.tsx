@@ -51,7 +51,7 @@ export function QuizForm({
 
   if (result) {
     return (
-      <div className={`brutal-box p-8 md:p-12 brutal-shadow text-center ${result.passed ? 'border-green-500' : 'border-[var(--accent-orange)]'}`}>
+      <div className={`brutal-box p-8 md:p-12 brutal-shadow text-center ${result.passed ? 'border-[var(--success)]' : 'border-[var(--accent-orange)]'}`}>
         <div className="text-6xl font-bold mb-2">{result.score}%</div>
         <h2 className="text-2xl font-bold mb-4">
           {result.passed ? 'Congratulations, you passed!' : 'Keep trying!'}

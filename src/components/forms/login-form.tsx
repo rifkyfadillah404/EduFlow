@@ -27,7 +27,7 @@ export function LoginForm() {
         </div>
 
         {state?.error && (
-          <div className="text-sm text-red-500 font-medium p-2 border border-red-500/20 bg-red-500/10 brutal-box">
+          <div className="text-sm text-[var(--error)] font-medium p-2 border border-[var(--error)]/20 bg-[var(--error)]/10 brutal-box">
             {state.error}
           </div>
         )}

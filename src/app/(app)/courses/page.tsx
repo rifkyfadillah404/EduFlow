@@ -24,7 +24,6 @@ export default async function CoursesPage() {
           <Link href={`/courses/${course.slug}`} key={course.id} className="group">
             <div className="brutal-box h-full flex flex-col transition-all duration-200 group-hover:brutal-shadow group-hover:-translate-y-1">
               <div className="h-40 bg-[var(--surface-secondary)] border-b border-[var(--border-color)] flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-transparent"></div>
                 <span className="font-mono text-4xl text-[var(--ink-dim)]">{course.category.slice(0, 2).toUpperCase()}</span>
               </div>
               <div className="p-5 flex-1 flex flex-col">

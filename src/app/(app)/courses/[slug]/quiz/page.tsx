@@ -59,8 +59,8 @@ export default async function QuizPage({ params }: { params: Promise<{ slug: str
 
     return (
       <div className="container mx-auto max-w-3xl p-6 py-12 text-center">
-        <div className="brutal-box p-12 bg-[var(--surface-secondary)] brutal-shadow border-green-500">
-          <div className="h-20 w-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/30">
+        <div className="brutal-box p-12 bg-[var(--surface-secondary)] brutal-shadow border-[var(--success)]">
+          <div className="h-20 w-20 bg-[var(--success)]/10 text-[var(--success)] flex items-center justify-center mx-auto mb-6 border border-[var(--success)]/30">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h1 className="text-3xl font-bold mb-4">Congratulations! 🎉</h1>

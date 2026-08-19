@@ -1,70 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8F8F8;
-  --foreground: #1A1A1A;
-  --surface: #F8F8F8;
-  --surface-secondary: #FFFFFF;
-  --surface-tertiary: rgba(30, 30, 30, 0.03);
-  --ink: #1A1A1A;
-  --ink-muted: rgba(30, 30, 30, 0.55);
-  --ink-faint: rgba(30, 30, 30, 0.35);
-  --ink-dim: rgba(30, 30, 30, 0.2);
-  --ink-dimmer: rgba(30, 30, 30, 0.12);
-  --ink-faintest: rgba(30, 30, 30, 0.07);
-  --accent: #10B981;
-  --accent-hover: #059669;
-  --accent-text: #047857;
-  --accent-orange: #F59E0B;
-  --accent-orange-text: #B45309;
-  --on-accent: #04140D;
-  --border-color: #1A1A1A;
-  --border-color-rgb: 26, 26, 26;
-  --hero-gradient: linear-gradient(180deg, #4A5568 0%, #1A1A1A 100%);
-  --grid-opacity: 0.04;
-  --scrollbar-track: #E8E8E8;
-  --scrollbar-thumb: #1A1A1A;
-  --scrollbar-thumb-hover: #10B981;
-  --text-hover: #FFFFFF;
-  --bg-hover: #1A1A1A;
+  --background: #E9E2D4;
+  --foreground: #141C2B;
+  --surface: #EFE9DD;
+  --surface-secondary: #E5DED0;
+  --surface-tertiary: rgba(20, 28, 43, 0.03);
+  --ink: #141C2B;
+  --ink-muted: rgba(20, 28, 43, 0.55);
+  --ink-faint: rgba(20, 28, 43, 0.35);
+  --ink-dim: rgba(20, 28, 43, 0.2);
+  --ink-dimmer: rgba(20, 28, 43, 0.12);
+  --ink-faintest: rgba(20, 28, 43, 0.07);
+  --accent: #2C4A8F;
+  --accent-hover: #1F3B73;
+  --accent-text: #2C4A8F;
+  --accent-orange: #2C4A8F;
+  --accent-orange-text: #EFE9DD;
+  --on-accent: #EFE9DD;
+  --border-color: #141C2B;
+  --border-color-rgb: 20, 28, 43;
+  --border-faint: rgba(20, 28, 43, 0.16);
+  --success: #2E6B4F;
+  --warning: #8A6D1A;
+  --error: #8C2F2F;
+  --error-hover: #6E2424;
+  --hero-gradient: #141C2B;
+  --grid-opacity: 0.06;
+  --scrollbar-track: #E9E2D4;
+  --scrollbar-thumb: #141C2B;
+  --scrollbar-thumb-hover: #2C4A8F;
+  --text-hover: #EFE9DD;
+  --bg-hover: #141C2B;
+}
+
+html {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0C0C0C;
-    --foreground: #D7E2EA;
-    --surface: #0C0C0C;
-    --surface-secondary: #050505;
-    --surface-tertiary: rgba(215, 226, 234, 0.03);
-    --ink: #D7E2EA;
-    --ink-muted: rgba(215, 226, 234, 0.55);
-    --ink-faint: rgba(215, 226, 234, 0.35);
-    --ink-dim: rgba(215, 226, 234, 0.2);
-    --ink-dimmer: rgba(215, 226, 234, 0.12);
-    --ink-faintest: rgba(215, 226, 234, 0.07);
-    --accent: #34D399;
-    --accent-hover: #10B981;
-    --accent-text: #86EFAC;
-    --accent-orange: #FBBF24;
-    --accent-orange-text: #FDE68A;
-    --on-accent: #04140D;
-    --border-color: #D7E2EA;
-    --border-color-rgb: 215, 226, 234;
-    --hero-gradient: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
-    --grid-opacity: 0.075;
-    --scrollbar-track: #0C0C0C;
-    --scrollbar-thumb: #D7E2EA;
-    --scrollbar-thumb-hover: #34D399;
-    --text-hover: #0C0C0C;
-    --bg-hover: #D7E2EA;
-  }
+  --font-sans: var(--font-sans);
+  --font-mono: 'Courier Prime', 'Courier New', ui-monospace, monospace;
 }
 
 /* Landing stationery page — unlayered so its solid backgrounds beat styled utilities */
@@ -74,6 +52,11 @@
 
 .font-mono {
   font-family: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+}
+
+.font-signature {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
 }
 
 .landing-fixed {
@@ -106,16 +89,11 @@ body {
   .brutal-box {
     border: 1.5px solid var(--border-color);
     background-color: var(--surface);
-    border-radius: 6px;
+    border-radius: 0;
   }
 
   .brutal-shadow {
-    box-shadow: 4px 4px 0 var(--ink-dimmer);
-  }
-  @media (min-width: 640px) {
-    .brutal-shadow {
-      box-shadow: 6px 6px 0 var(--ink-dimmer);
-    }
+    box-shadow: none;
   }
 }
 

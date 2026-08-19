@@ -57,7 +57,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseS
   const percentage = Math.round((completedIds.length / course.lessons.length) * 100)
 
   return (
-    <div className="flex-1 flex flex-col md:flex-row h-[calc(100vh-3.5rem)] overflow-hidden">
+    <div className="flex-1 flex flex-col md:flex-row h-[calc(100svh-3.5rem)] md:h-svh overflow-hidden">
       {/* Sidebar Desktop */}
       <aside className="hidden md:flex w-80 flex-col border-r border-[var(--border-color)] bg-[var(--surface-secondary)] overflow-y-auto">
         <div className="p-4 border-b border-[var(--border-color)] sticky top-0 bg-[var(--surface-secondary)] z-10">
@@ -80,7 +80,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseS
               <Link key={lesson.id} href={`/learn/${courseSlug}/${lesson.slug}`}>
                 <div className={`flex items-center gap-3 p-3 text-sm transition-colors border ${isActive ? 'bg-[var(--surface)] border-[var(--border-color)] font-medium' : 'border-transparent hover:bg-[var(--surface)] hover:border-[var(--border-color)]'}`}>
                   {isDone ? (
-                     <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                     <CheckCircle className="h-4 w-4 text-[var(--success)] flex-shrink-0" />
                   ) : (
                      <Circle className="h-4 w-4 text-[var(--ink-faint)] flex-shrink-0" />
                   )}
@@ -111,7 +111,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseS
             <h1 className="text-3xl md:text-4xl font-bold">{currentLesson.title}</h1>
           </div>
 
-          <div className="prose prose-neutral dark:prose-invert max-w-none mb-12 bg-[var(--surface-secondary)] p-6 md:p-8 brutal-box">
+          <div className="prose prose-neutral max-w-none mb-12 bg-[var(--surface-secondary)] p-6 md:p-8 brutal-box">
             {/* Extremely simple markdown rendering for MVP. A real app would use react-markdown. */}
             <div dangerouslySetInnerHTML={{ __html: currentLesson.body?.replace(/\n/g, '<br/>') || '' }} className="whitespace-pre-wrap font-sans" />
           </div>

@@ -86,7 +86,7 @@ export default async function DashboardPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-[10px] font-semibold px-2 py-0.5 brutal-box bg-[var(--surface)] uppercase">{course.category}</span>
-                    {isCompleted && <span className="text-[10px] font-semibold px-2 py-0.5 brutal-box bg-green-500/10 text-green-600 border-green-500/30 uppercase">Completed</span>}
+                    {isCompleted && <span className="text-[10px] font-semibold px-2 py-0.5 brutal-box bg-[var(--success)]/10 text-[var(--success)] border-[var(--success)]/30 uppercase">Completed</span>}
                   </div>
                   <h3 className="text-xl font-bold mb-1">{course.title}</h3>
                   <p className="text-sm text-[var(--ink-faint)] line-clamp-1 mb-4">{course.shortDescription}</p>

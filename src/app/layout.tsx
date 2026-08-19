@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Kanit } from 'next/font/google'
 import '@/app/globals.css'
-import { Navbar } from '@/components/layout/navbar'
 
 const kanit = Kanit({
   subsets: ['latin'],
@@ -22,10 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${kanit.variable} font-sans antialiased min-h-screen flex flex-col grid-bg-dark`}>
-        <Navbar />
-        <main className="flex-1 flex flex-col">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   )

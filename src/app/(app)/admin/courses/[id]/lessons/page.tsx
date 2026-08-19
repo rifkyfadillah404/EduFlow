@@ -40,7 +40,7 @@ export default async function ManageLessonsPage({ params }: { params: Promise<{ 
             course.lessons.map((lesson, idx) => (
               <div key={lesson.id} className="brutal-box p-4 bg-[var(--surface-secondary)] flex items-center justify-between group hover:brutal-shadow transition-all">
                 <div className="flex items-center gap-4">
-                  <div className="h-8 w-8 rounded-full border border-[var(--border-color)] flex items-center justify-center bg-[var(--surface)] text-sm font-bold flex-shrink-0">
+                  <div className="h-8 w-8 border border-[var(--border-color)] flex items-center justify-center bg-[var(--surface)] text-sm font-bold flex-shrink-0">
                     {idx + 1}
                   </div>
                   <div>
@@ -64,7 +64,7 @@ export default async function ManageLessonsPage({ params }: { params: Promise<{ 
         </div>
       </div>
 
-      <div className="sticky top-20">
+      <div className="sticky top-8">
         <h2 className="text-xl font-bold mb-4">Add New Lesson</h2>
         <LessonForm courseId={course.id} />
       </div>

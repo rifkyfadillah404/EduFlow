@@ -29,7 +29,7 @@ export function MarkCompleteButton({
 
   if (isCompleted) {
     return (
-      <div className="flex items-center gap-2 text-green-500 font-medium px-4 py-2 brutal-box bg-green-500/10 border-green-500/30">
+      <div className="flex items-center gap-2 text-[var(--success)] font-medium px-4 py-2 brutal-box bg-[var(--success)]/10 border-[var(--success)]/30">
         <CheckCircle className="h-5 w-5" />
         Completed
       </div>

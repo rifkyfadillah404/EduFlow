@@ -72,7 +72,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
           <div className="brutal-box p-6 md:p-8">
             <h2 className="text-2xl font-bold mb-4">About this course</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none text-[var(--ink)] whitespace-pre-wrap">
+            <div className="prose prose-neutral max-w-none text-[var(--ink)] whitespace-pre-wrap">
               {course.description}
             </div>
           </div>
@@ -90,7 +90,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                 return (
                   <div key={lesson.id} className="flex items-center justify-between p-4 border border-[var(--border-color)] bg-[var(--surface-secondary)] group">
                     <div className="flex items-center gap-4">
-                      <div className="h-8 w-8 rounded-full border border-[var(--border-color)] flex items-center justify-center bg-[var(--surface)] text-sm font-bold flex-shrink-0">
+                      <div className="h-8 w-8 border border-[var(--border-color)] flex items-center justify-center bg-[var(--surface)] text-sm font-bold flex-shrink-0">
                         {idx + 1}
                       </div>
                       <div>
@@ -107,13 +107,13 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     </div>
                     <div>
                       {isCompleted ? (
-                        <CheckCircle className="h-5 w-5 text-green-500" />
+                        <CheckCircle className="h-5 w-5 text-[var(--success)]" />
                       ) : canAccess ? (
                         <Link href={`/learn/${course.slug}/${lesson.slug}`}>
                           <Button variant="outline" className="h-8 px-3 text-xs">View</Button>
                         </Link>
                       ) : (
-                        <div className="h-5 w-5 rounded-full border border-[var(--border-color)]"></div>
+                        <div className="h-5 w-5 border border-[var(--border-color)]"></div>
                       )}
                     </div>
                   </div>
@@ -123,7 +123,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
               {course.quizzes.length > 0 && (
                 <div className="flex items-center justify-between p-4 border border-[var(--border-color)] bg-[var(--surface-secondary)] mt-4">
                   <div className="flex items-center gap-4">
-                    <div className="h-8 w-8 rounded-full border border-[var(--accent-orange)] bg-[var(--accent-orange)]/10 text-[var(--accent-orange)] flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    <div className="h-8 w-8 border border-[var(--accent-orange)] bg-[var(--accent-orange)]/10 text-[var(--accent-orange)] flex items-center justify-center text-sm font-bold flex-shrink-0">
                       ★
                     </div>
                     <div>
@@ -148,9 +148,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
         {/* Sidebar */}
         <div className="lg:col-span-1">
-          <div className="brutal-box p-6 sticky top-20 bg-[var(--surface-secondary)] brutal-shadow">
+          <div className="brutal-box p-6 sticky top-8 bg-[var(--surface-secondary)] brutal-shadow">
             <div className="aspect-video bg-[var(--surface)] border border-[var(--border-color)] mb-6 flex items-center justify-center relative overflow-hidden">
-               <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-transparent"></div>
                <BookOpen className="h-12 w-12 text-[var(--ink-dim)] relative z-10" />
             </div>
 

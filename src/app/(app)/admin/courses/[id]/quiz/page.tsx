@@ -81,8 +81,8 @@ export default async function ManageQuizPage({ params }: { params: Promise<{ id:
                       <div className="font-bold mb-4"><span className="text-[var(--ink-faint)] mr-2">{idx + 1}.</span> {q.question}</div>
                       <div className="space-y-2 pl-6">
                         {options.map((opt, oIdx) => (
-                          <div key={oIdx} className={`flex items-center gap-2 p-2 border ${oIdx === q.correctOptionIndex ? 'border-green-500 bg-green-500/10' : 'border-transparent bg-[var(--surface)]'}`}>
-                            {oIdx === q.correctOptionIndex && <span className="text-green-500 text-xs font-bold w-4">✓</span>}
+                          <div key={oIdx} className={`flex items-center gap-2 p-2 border ${oIdx === q.correctOptionIndex ? 'border-[var(--success)] bg-[var(--success)]/10' : 'border-transparent bg-[var(--surface)]'}`}>
+                            {oIdx === q.correctOptionIndex && <span className="text-[var(--success)] text-xs font-bold w-4">✓</span>}
                             {oIdx !== q.correctOptionIndex && <span className="w-4"></span>}
                             <span>{opt}</span>
                           </div>
