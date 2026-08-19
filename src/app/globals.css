@@ -67,6 +67,34 @@
   }
 }
 
+/* Landing stationery page — unlayered so its solid backgrounds beat styled utilities */
+.font-display {
+  font-family: Georgia, 'Times New Roman', 'Nimbus Roman', 'Liberation Serif', serif;
+}
+
+.font-mono {
+  font-family: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+}
+
+.landing-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #E9E2D4;
+  font-family: Georgia, 'Times New Roman', 'Nimbus Roman', 'Liberation Serif', serif;
+  color: #141C2B;
+  overflow: hidden;
+}
+
+/* Body-level base for the landing pages only */
+:root:has(.landing-fixed) body {
+  background: #E9E2D4;
+  color: #141C2B;
+}
+:root:has(.landing-fixed) {
+  --scrollbar-track: #E9E2D4;
+  --scrollbar-thumb: #141C2B;
+}
 body {
   background: var(--surface);
   color: var(--ink);
@@ -98,4 +126,92 @@ body {
     linear-gradient(90deg, rgba(var(--border-color-rgb), var(--grid-opacity)) 1px, transparent 1px);
   background-size: 72px 72px;
   background-position: center top;
+}
+/* ===== Landing stationery page ===== */
+:root:has(.landing-fixed) .grid-bg-dark {
+  background-image: none;
+}
+
+.landing-scroll {
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.015em;
+  font-family: Georgia, 'Times New Roman', 'Nimbus Roman', 'Liberation Serif', serif;
+  color: #141C2B;
+}
+.landing-mono {
+  font-family: 'Courier Prime', 'Courier New', ui-monospace, monospace !important;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  line-height: 1.9;
+  text-transform: uppercase;
+}
+.em-accent {
+  color: #2C4A8F;
+  font-style: italic;
+}
+.hairline {
+  border-top: 1px solid rgba(20, 28, 43, 0.16);
+}
+.invert-hairline {
+  border-top: 1px solid rgba(20, 28, 43, 0.16);
+}
+.landing-mark {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform: translateY(50svh);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+  animation: mark-drift 0.001s linear;
+  animation-timeline: scroll();
+  animation-range: 0 1200px;
+}
+.landing-mark svg {
+  width: 92vw;
+  max-width: 58vh;
+  height: 100%;
+  overflow: visible;
+  will-change: transform;
+}
+@keyframes mark-drift {
+  0% { transform: translateY(50svh) scale(1) rotate(0deg); }
+  100% { transform: translateY(22svh) scale(0.9) rotate(2deg); }
+}
+.landing-mark.closed {
+  visibility: hidden;
+}
+@supports not (animation-timeline: scroll()) {
+  .landing-mark {
+    transform: translateY(42svh);
+  }
+}
+.spread {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-family: Georgia, 'Times New Roman', 'Nimbus Roman', 'Liberation Serif', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #141C2B;
+}
+.spread-letter {
+  opacity: 0;
+  transform: translateY(0.08em) scale(0.96);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.spread-letter.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-mark { display: none; }
+  .spread-letter { opacity: 1; transform: none; }
 }
