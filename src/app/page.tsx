@@ -6,27 +6,22 @@ import Link from 'next/link'
 const WORDMARK = ['E', 'd', 'u', 'F', 'l', 'o', 'w']
 
 const WAYS = [
-  ['01', 'By signup', 'Register with any email and password — nothing else. Courses open the moment you are in.'],
-  ['02', 'By enrolment', 'Open a published course, press enrol, start the first lesson.'],
-  ['03', 'By completion', 'Tick the last lesson, pass the final quiz, collect the certificate.'],
+  ['01', 'Pick a course', 'Three published courses sit in the catalog — Frontend, React, and Backend APIs.'],
+  ['02', 'Work the lessons', 'Each course is three lessons in order; the progress bar fills as you go.'],
+  ['03', 'Pass the quiz', 'One final quiz per course. Pass it and the certificate is yours.'],
 ]
 
-const DETAILS_GOAL = [
-  ['01', 'One page previews', 'Course pages carry their lesson list.', '—'],
-  ['02', 'Learning shows', 'Progress bar per course, in the sidebar.', '—'],
-  ['03', 'Own record', 'Quiz attempts saved per student.', '—'],
-]
-
-const DETAILS_BUILD = [
-  ['01', 'Next.js 16', 'App Router, server components and actions.', '16'],
-  ['02', 'Prisma 7', 'SQLite locally, Postgres on deploy.', '7'],
-  ['03', 'Auth.js', 'Credentials, hashed with bcrypt.', '—'],
+const COURSES = [
+  ['01', 'Frontend Fundamentals', 'The basics of HTML, CSS, and JavaScript — the ground every page stands on.', '3 lessons'],
+  ['02', 'React for Beginners', 'Modern UIs from components, state, and effects — a real interface in your hands.', '3 lessons'],
+  ['03', 'Backend API Basics', 'REST APIs and authentication — what happens behind the URL.', '3 lessons'],
 ]
 
 const UNITS = [
-  ['Roles', 'Student and admin, one dashboard each', '2'],
-  ['Courses', 'Seeded with three ready to learn', '3'],
-  ['Certificates', 'One code, one image, prints to A4', '∞'],
+  ['01', 'Courses', 'Seeded and published, ready to enrol', '3'],
+  ['02', 'Lessons', 'Three per course, nine in total', '9'],
+  ['03', 'Quizzes', 'One final quiz per course', '3'],
+  ['04', 'Certificates', 'Earned on passing the quiz', '∞'],
 ]
 
 type StyleKey = 'structured' | 'hands' | 'quiz'
@@ -43,7 +38,7 @@ const FACTS: Record<StyleKey, string[]> = {
 
 const HEROSTATS: [string, string][] = [
   ['Courses', '3'],
-  ['Lessons', '6'],
+  ['Lessons', '9'],
   ['Quizzes', '1/course'],
   ['Certificates', 'On passing'],
 ]
@@ -421,17 +416,13 @@ export default function Landing() {
           <Reveal>
             <p className="landing-mono mt-2 text-[#767E8C]">03 — MATERIALS</p>
             <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.02em] text-[#141C2B]">
-              Built under a clear desk — the parts beneath the surface.
+              Three courses, on the shelf today — take any of them now.
             </h2>
           </Reveal>
           <Reveal>
             <div>
-              <p className="landing-mono text-[#767E8C]">The goal</p>
-              {DETAILS_GOAL.map(([num, label, desc, value], i) => (
-                <Row key={num} num={num} label={label} desc={desc} value={value} first={i === 0} />
-              ))}
-              <p className="landing-mono mt-6 text-[#767E8C]">The build</p>
-              {DETAILS_BUILD.map(([num, label, desc, value], i) => (
+              <p className="landing-mono text-[#767E8C]">The catalog</p>
+              {COURSES.map(([num, label, desc, value], i) => (
                 <Row key={num} num={num} label={label} desc={desc} value={value} first={i === 0} />
               ))}
             </div>
@@ -447,8 +438,8 @@ export default function Landing() {
             </h2>
           </Reveal>
           <Reveal className="mt-8">
-            {UNITS.map(([label, desc, value], i) => (
-              <Row key={label} num={String(i + 1).padStart(2, '0')} label={label} desc={desc} value={value} first={i === 0} />
+            {UNITS.map(([num, label, desc, value], i) => (
+              <Row key={num} num={num} label={label} desc={desc} value={value} first={i === 0} />
             ))}
           </Reveal>
         </section>
