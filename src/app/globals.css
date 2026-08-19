@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F8F8;
+  --foreground: #1A1A1A;
+  --surface: #F8F8F8;
+  --surface-secondary: #FFFFFF;
+  --surface-tertiary: rgba(30, 30, 30, 0.03);
+  --ink: #1A1A1A;
+  --ink-muted: rgba(30, 30, 30, 0.55);
+  --ink-faint: rgba(30, 30, 30, 0.35);
+  --ink-dim: rgba(30, 30, 30, 0.2);
+  --ink-dimmer: rgba(30, 30, 30, 0.12);
+  --ink-faintest: rgba(30, 30, 30, 0.07);
+  --accent: #B600A8;
+  --accent-orange: #BE4C00;
+  --border-color: #1A1A1A;
+  --border-color-rgb: 26, 26, 26;
+  --hero-gradient: linear-gradient(180deg, #4A5568 0%, #1A1A1A 100%);
+  --grid-opacity: 0.04;
+  --scrollbar-track: #E8E8E8;
+  --scrollbar-thumb: #1A1A1A;
+  --scrollbar-thumb-hover: #B600A8;
+  --text-hover: #FFFFFF;
+  --bg-hover: #1A1A1A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0C0C0C;
+    --foreground: #D7E2EA;
+    --surface: #0C0C0C;
+    --surface-secondary: #050505;
+    --surface-tertiary: rgba(215, 226, 234, 0.03);
+    --ink: #D7E2EA;
+    --ink-muted: rgba(215, 226, 234, 0.55);
+    --ink-faint: rgba(215, 226, 234, 0.35);
+    --ink-dim: rgba(215, 226, 234, 0.2);
+    --ink-dimmer: rgba(215, 226, 234, 0.12);
+    --ink-faintest: rgba(215, 226, 234, 0.07);
+    --accent: #B600A8;
+    --accent-orange: #BE4C00;
+    --border-color: #D7E2EA;
+    --border-color-rgb: 215, 226, 234;
+    --hero-gradient: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+    --grid-opacity: 0.075;
+    --scrollbar-track: #0C0C0C;
+    --scrollbar-thumb: #D7E2EA;
+    --scrollbar-thumb-hover: #B600A8;
+    --text-hover: #0C0C0C;
+    --bg-hover: #D7E2EA;
+  }
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Brutalist primitives */
+.brutal-box {
+  border: 2px solid var(--border-color);
+  background-color: var(--surface);
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0 var(--ink-dimmer);
+}
+@media (min-width: 640px) {
+  .brutal-shadow {
+    box-shadow: 8px 8px 0 var(--ink-dimmer);
+  }
+}
+
+.grid-bg-dark {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(rgba(var(--border-color-rgb), var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--border-color-rgb), var(--grid-opacity)) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center top;
+}

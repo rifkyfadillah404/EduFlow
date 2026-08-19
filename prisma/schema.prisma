@@ -1,0 +1,155 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum ContentType {
+  TEXT
+  VIDEO
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+}
+
+model User {
+  id             String           @id @default(cuid())
+  name           String
+  email          String           @unique
+  passwordHash   String
+  role           Role             @default(STUDENT)
+  createdAt      DateTime         @default(now())
+  courses        Course[]         @relation("InstructorCourses")
+  enrollments    Enrollment[]
+  lessonProgress LessonProgress[]
+  quizAttempts   QuizAttempt[]
+  certificates   Certificate[]
+}
+
+model Course {
+  id               String           @id @default(cuid())
+  title            String
+  slug             String           @unique
+  shortDescription String?
+  description      String?
+  thumbnailUrl     String?
+  category         String
+  level            CourseLevel      @default(BEGINNER)
+  isPublished      Boolean          @default(false)
+  createdBy        String
+  instructor       User             @relation("InstructorCourses", fields: [createdBy], references: [id])
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  lessons          Lesson[]
+  enrollments      Enrollment[]
+  quizzes          Quiz[]
+  certificates     Certificate[]
+}
+
+model Lesson {
+  id          String           @id @default(cuid())
+  courseId    String
+  course      Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title       String
+  slug        String
+  contentType ContentType      @default(TEXT)
+  body        String?
+  videoUrl    String?
+  orderIndex  Int              @default(0)
+  isPreview   Boolean          @default(false)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  progress    LessonProgress[]
+
+  @@unique([courseId, slug])
+}
+
+model Enrollment {
+  id          String           @id @default(cuid())
+  userId      String
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId     String
+  course      Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  status      EnrollmentStatus @default(ACTIVE)
+  enrolledAt  DateTime         @default(now())
+  completedAt DateTime?
+
+  @@unique([userId, courseId])
+}
+
+model LessonProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  completedAt DateTime @default(now())
+
+  @@unique([userId, lessonId])
+}
+
+model Quiz {
+  id           String         @id @default(cuid())
+  courseId     String
+  course       Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title        String
+  passingScore Int            @default(70)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  questions    QuizQuestion[]
+  attempts     QuizAttempt[]
+}
+
+model QuizQuestion {
+  id                 String   @id @default(cuid())
+  quizId             String
+  quiz               Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  question           String
+  options            String   // JSON array of strings
+  correctOptionIndex Int
+  explanation        String?
+  orderIndex         Int      @default(0)
+  createdAt          DateTime @default(now())
+}
+
+model QuizAttempt {
+  id             String   @id @default(cuid())
+  quizId         String
+  quiz           Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  score          Int
+  correctCount   Int
+  totalQuestions Int
+  passed         Boolean
+  answers        String?  // JSON array of submitted answers
+  submittedAt    DateTime @default(now())
+}
+
+model Certificate {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId         String
+  course          Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  certificateCode String   @unique
+  issuedAt        DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
