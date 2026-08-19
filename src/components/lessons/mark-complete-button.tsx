@@ -41,7 +41,7 @@ export function MarkCompleteButton({
       variant="outline"
       onClick={handleMarkComplete}
       disabled={disabled || isPending}
-      className="w-full border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white"
+      className="w-full border-[var(--accent)] text-[var(--accent-text)] hover:bg-[var(--accent)] hover:text-[var(--on-accent)]"
     >
       {isPending ? 'Saving...' : 'Mark as Complete'}
     </Button>

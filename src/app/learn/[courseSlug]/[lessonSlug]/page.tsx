@@ -140,7 +140,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseS
               ) : (
                 percentage === 100 ? (
                   <Link href={`/courses/${courseSlug}/quiz`} className="flex-1 sm:flex-none">
-                     <Button className="w-full bg-[var(--accent-orange)] text-white hover:bg-[var(--accent-hover)] hover:border-[var(--accent-hover)]">Take Quiz</Button>
+                     <Button className="w-full bg-[var(--accent-orange)] text-[var(--accent-orange-text)] hover:bg-[var(--accent-hover)] hover:text-[var(--on-accent)] hover:border-[var(--accent-hover)]">Take Quiz</Button>
                   </Link>
                 ) : (
                   <div className="text-sm text-[var(--ink-faint)] px-4">Complete all lessons for quiz</div>

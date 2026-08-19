@@ -70,7 +70,7 @@ export default async function QuizPage({ params }: { params: Promise<{ slug: str
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             {cert && (
               <Link href={`/certificates/${cert.certificateCode}`}>
-                <button className="brutal-box px-6 py-3 font-medium bg-\[var(--accent)\] text-white border-\[var(--accent)\] hover:bg-\[var(--accent-hover)\]">View Certificate</button>
+                <button className="brutal-box px-6 py-3 font-medium bg-[var(--accent)] text-[var(--on-accent)] border-[var(--accent)] hover:bg-[var(--accent-hover)]">View Certificate</button>
               </Link>
             )}
             <Link href={`/courses/${slug}`}>

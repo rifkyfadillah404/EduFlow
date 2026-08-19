@@ -16,7 +16,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           variant === 'primary' && 'bg-[var(--accent)] text-[#04140D] font-semibold hover:bg-[var(--accent-hover)] border-[var(--accent)]',
           variant === 'secondary' && 'bg-transparent text-[var(--ink)] hover:bg-[var(--ink-faintest)]',
           variant === 'outline' && 'bg-transparent text-[var(--ink)] border-[var(--border-color)] hover:bg-[var(--ink-faintest)]',
-          variant === 'danger' && 'bg-red-500 text-white border-red-600 hover:bg-red-600',
+          variant === 'danger' && 'bg-red-600 text-white border-red-700 hover:bg-red-700',
           className
         )}
         {...props}

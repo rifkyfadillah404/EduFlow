@@ -14,7 +14,10 @@
   --ink-faintest: rgba(30, 30, 30, 0.07);
   --accent: #10B981;
   --accent-hover: #059669;
+  --accent-text: #047857;
   --accent-orange: #F59E0B;
+  --accent-orange-text: #B45309;
+  --on-accent: #04140D;
   --border-color: #1A1A1A;
   --border-color-rgb: 26, 26, 26;
   --hero-gradient: linear-gradient(180deg, #4A5568 0%, #1A1A1A 100%);
@@ -48,7 +51,10 @@
     --ink-faintest: rgba(215, 226, 234, 0.07);
     --accent: #34D399;
     --accent-hover: #10B981;
+    --accent-text: #86EFAC;
     --accent-orange: #FBBF24;
+    --accent-orange-text: #FDE68A;
+    --on-accent: #04140D;
     --border-color: #D7E2EA;
     --border-color-rgb: 215, 226, 234;
     --hero-gradient: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
