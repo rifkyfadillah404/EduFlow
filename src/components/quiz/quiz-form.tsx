@@ -65,7 +65,7 @@ export function QuizForm({
             <>
               {result.certificateCode && (
                  <Link href={`/certificates/${result.certificateCode}`}>
-                   <Button className="w-full sm:w-auto bg-[#2E90FA] hover:bg-[#1B7CE0] border-[#2E90FA]">View Certificate</Button>
+                   <Button className="w-full sm:w-auto bg-[var(--accent)] hover:bg-[var(--accent-hover)] border-[var(--accent)]">View Certificate</Button>
                  </Link>
               )}
               <Link href={`/dashboard`}>

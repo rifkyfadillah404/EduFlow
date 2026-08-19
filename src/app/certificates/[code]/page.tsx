@@ -51,9 +51,9 @@ export default async function CertificatePage({ params }: { params: Promise<{ co
               <p className="text-sm font-semibold uppercase">Instructor</p>
             </div>
 
-            <div className="w-24 h-24 rounded-full border-4 border-[#2E90FA] flex items-center justify-center relative">
-              <div className="absolute inset-2 rounded-full border border-[#2E90FA]"></div>
-              <span className="font-bold text-[#2E90FA] text-xs uppercase tracking-widest text-center">Edu<br/>Flow</span>
+            <div className="w-24 h-24 rounded-full border-4 border-[var(--accent)] flex items-center justify-center relative">
+              <div className="absolute inset-2 rounded-full border border-[var(--accent)]"></div>
+              <span className="font-bold text-[var(--accent)] text-xs uppercase tracking-widest text-center">Edu<br/>Flow</span>
             </div>
 
             <div className="text-right w-48">

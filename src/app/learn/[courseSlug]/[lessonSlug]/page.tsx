@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth'
 import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Circle, ChevronLeft, ChevronRight,  } from 'lucide-react'
+import { CheckCircle, Circle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { MarkCompleteButton } from '@/components/lessons/mark-complete-button'
 
 export default async function LessonPage({ params }: { params: Promise<{ courseSlug: string, lessonSlug: string }> }) {
@@ -140,7 +140,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseS
               ) : (
                 percentage === 100 ? (
                   <Link href={`/courses/${courseSlug}/quiz`} className="flex-1 sm:flex-none">
-                     <Button className="w-full bg-[var(--accent-orange)] text-white hover:bg-[#A33D00] hover:border-[#A33D00]">Take Quiz</Button>
+                     <Button className="w-full bg-[var(--accent-orange)] text-white hover:bg-[var(--accent-hover)] hover:border-[var(--accent-hover)]">Take Quiz</Button>
                   </Link>
                 ) : (
                   <div className="text-sm text-[var(--ink-faint)] px-4">Complete all lessons for quiz</div>

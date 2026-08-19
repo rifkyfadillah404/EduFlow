@@ -12,15 +12,16 @@
   --ink-dim: rgba(30, 30, 30, 0.2);
   --ink-dimmer: rgba(30, 30, 30, 0.12);
   --ink-faintest: rgba(30, 30, 30, 0.07);
-  --accent: #B600A8;
-  --accent-orange: #BE4C00;
+  --accent: #10B981;
+  --accent-hover: #059669;
+  --accent-orange: #F59E0B;
   --border-color: #1A1A1A;
   --border-color-rgb: 26, 26, 26;
   --hero-gradient: linear-gradient(180deg, #4A5568 0%, #1A1A1A 100%);
   --grid-opacity: 0.04;
   --scrollbar-track: #E8E8E8;
   --scrollbar-thumb: #1A1A1A;
-  --scrollbar-thumb-hover: #B600A8;
+  --scrollbar-thumb-hover: #10B981;
   --text-hover: #FFFFFF;
   --bg-hover: #1A1A1A;
 }
@@ -45,15 +46,16 @@
     --ink-dim: rgba(215, 226, 234, 0.2);
     --ink-dimmer: rgba(215, 226, 234, 0.12);
     --ink-faintest: rgba(215, 226, 234, 0.07);
-    --accent: #B600A8;
-    --accent-orange: #BE4C00;
+    --accent: #34D399;
+    --accent-hover: #10B981;
+    --accent-orange: #FBBF24;
     --border-color: #D7E2EA;
     --border-color-rgb: 215, 226, 234;
     --hero-gradient: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
     --grid-opacity: 0.075;
     --scrollbar-track: #0C0C0C;
     --scrollbar-thumb: #D7E2EA;
-    --scrollbar-thumb-hover: #B600A8;
+    --scrollbar-thumb-hover: #34D399;
     --text-hover: #0C0C0C;
     --bg-hover: #D7E2EA;
   }
@@ -67,8 +69,9 @@ body {
 
 /* Brutalist primitives */
 .brutal-box {
-  border: 2px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   background-color: var(--surface);
+  border-radius: 6px;
 }
 
 .brutal-shadow {
@@ -76,7 +79,7 @@ body {
 }
 @media (min-width: 640px) {
   .brutal-shadow {
-    box-shadow: 8px 8px 0 var(--ink-dimmer);
+    box-shadow: 6px 6px 0 var(--ink-dimmer);
   }
 }
 

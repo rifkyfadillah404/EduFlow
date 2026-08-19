@@ -21,6 +21,19 @@ export default async function DashboardPage() {
     orderBy: { enrolledAt: 'desc' }
   })
 
+  // Count completed lessons per enrolled course
+  const progressRows = await prisma.lessonProgress.findMany({
+    where: {
+      userId: session.user.id,
+      lesson: { courseId: { in: enrollments.map(e => e.courseId) } }
+    },
+    select: { lesson: { select: { courseId: true } } }
+  })
+  const completedByCourse = progressRows.reduce<Record<string, number>>((acc, r) => {
+    acc[r.lesson.courseId] = (acc[r.lesson.courseId] || 0) + 1
+    return acc
+  }, {})
+
   const certCount = await prisma.certificate.count({
     where: { userId: session.user.id }
   })
@@ -64,6 +77,9 @@ export default async function DashboardPage() {
             const course = en.course
             const firstLesson = course.lessons[0]
             const isCompleted = en.status === 'COMPLETED'
+            const totalLessons = course._count.lessons
+            const completedLessons = completedByCourse[course.id] || 0
+            const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
 
             return (
               <div key={en.id} className="brutal-box p-6 bg-[var(--surface-secondary)] flex flex-col sm:flex-row sm:items-center justify-between gap-6 transition-all hover:brutal-shadow">
@@ -76,10 +92,10 @@ export default async function DashboardPage() {
                   <p className="text-sm text-[var(--ink-faint)] line-clamp-1 mb-4">{course.shortDescription}</p>
 
                   <div className="flex items-center gap-2">
-                     <div className="flex-1 max-w-xs h-2 bg-[var(--surface)] border border-[var(--border-color)]">
-                       <div className="h-full bg-[var(--ink)]" style={{ width: isCompleted ? '100%' : '10%' }}></div>
+                     <div className="flex-1 max-w-xs h-2 bg-[var(--surface)] border border-[var(--border-color)] overflow-hidden">
+                       <div className="h-full bg-[var(--accent)] transition-all duration-500" style={{ width: `${pct}%` }}></div>
                      </div>
-                     <span className="text-xs font-mono text-[var(--ink-faint)]">{isCompleted ? '100%' : 'In progress'}</span>
+                     <span className="text-xs font-mono text-[var(--ink-faint)]">{pct}%</span>
                   </div>
                 </div>
 
