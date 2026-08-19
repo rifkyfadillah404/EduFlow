@@ -5,7 +5,7 @@ import { auth } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-export async function createCourseAction(formData: FormData) {
+export async function createCourseAction(prevState: unknown, formData: FormData) {
   const session = await auth()
   if (session?.user?.role !== 'ADMIN') throw new Error('Unauthorized')
 
@@ -29,7 +29,7 @@ export async function createCourseAction(formData: FormData) {
   redirect(`/admin/courses/${course.id}/edit`)
 }
 
-export async function updateCourseAction(id: string, formData: FormData) {
+export async function updateCourseAction(id: string, prevState: unknown, formData: FormData) {
   const session = await auth()
   if (session?.user?.role !== 'ADMIN') throw new Error('Unauthorized')
 

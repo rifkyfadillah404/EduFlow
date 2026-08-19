@@ -30,7 +30,7 @@ export async function markLessonCompleteAction(lessonId: string, courseSlug: str
 }
 
 // Admin actions
-export async function createLessonAction(courseId: string, formData: FormData) {
+export async function createLessonAction(courseId: string, prevState: unknown, formData: FormData) {
   const session = await auth()
   if (session?.user?.role !== 'ADMIN') throw new Error('Unauthorized')
 

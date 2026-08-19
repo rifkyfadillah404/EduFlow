@@ -73,19 +73,21 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Brutalist primitives */
-.brutal-box {
-  border: 1.5px solid var(--border-color);
-  background-color: var(--surface);
-  border-radius: 6px;
-}
+/* Brutalist primitives — in components layer so Tailwind utilities (bg-*, text-*) win */
+@layer components {
+  .brutal-box {
+    border: 1.5px solid var(--border-color);
+    background-color: var(--surface);
+    border-radius: 6px;
+  }
 
-.brutal-shadow {
-  box-shadow: 4px 4px 0 var(--ink-dimmer);
-}
-@media (min-width: 640px) {
   .brutal-shadow {
-    box-shadow: 6px 6px 0 var(--ink-dimmer);
+    box-shadow: 4px 4px 0 var(--ink-dimmer);
+  }
+  @media (min-width: 640px) {
+    .brutal-shadow {
+      box-shadow: 6px 6px 0 var(--ink-dimmer);
+    }
   }
 }
 
