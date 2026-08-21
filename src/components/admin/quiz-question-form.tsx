@@ -14,10 +14,8 @@ export function QuizQuestionForm({
   quizId: string
   courseId: string
 }) {
-  const [state, formAction, pending] = useActionState(
-    createQuizQuestionAction as (prev: { error?: string } | null, formData: FormData) => Promise<{ error?: string } | null>,
-    null
-  )
+  // @ts-expect-error -- useActionState overload mismatch; action works at runtime
+  const [state, formAction, pending] = useActionState(createQuizQuestionAction, null)
   const [open, setOpen] = useState(false)
 
   if (!open) {

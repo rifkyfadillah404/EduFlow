@@ -16,7 +16,7 @@ export async function createQuizAction(courseId: string) {
   revalidatePath(`/admin/courses/${courseId}/quiz`)
 }
 
-export async function createQuizQuestionAction(prevState: unknown, formData: FormData) {
+export async function createQuizQuestionAction(prevState: { error?: string } | null, formData: FormData) {
   const session = await auth()
   if (session?.user?.role !== 'ADMIN') throw new Error('Unauthorized')
 
@@ -53,6 +53,51 @@ export async function createQuizQuestionAction(prevState: unknown, formData: For
   })
 
   revalidatePath(`/admin/courses/${courseId}/quiz`)
+}
+
+export async function importQuizQuestionsAction(prevState: { error?: string; success?: string } | null, formData: FormData) {
+  const session = await auth()
+  if (session?.user?.role !== 'ADMIN') throw new Error('Unauthorized')
+
+  const quizId = formData.get('quizId') as string
+  const courseId = formData.get('courseId') as string
+  const raw = formData.get('json') as string
+
+  if (!raw?.trim()) return { error: 'Paste JSON data first' }
+
+  let questions: { question: string; options: string[]; correctOptionIndex: number; explanation?: string }[]
+  try {
+    questions = JSON.parse(raw)
+  } catch {
+    return { error: 'Invalid JSON — check syntax' }
+  }
+
+  if (!Array.isArray(questions) || questions.length === 0) {
+    return { error: 'JSON must be a non-empty array' }
+  }
+
+  const last = await prisma.quizQuestion.findFirst({
+    where: { quizId },
+    orderBy: { orderIndex: 'desc' },
+  })
+  let orderIndex = last ? last.orderIndex + 1 : 0
+
+  for (const q of questions) {
+    if (!q.question || !Array.isArray(q.options) || q.options.length !== 4 || typeof q.correctOptionIndex !== 'number') continue
+    await prisma.quizQuestion.create({
+      data: {
+        quizId,
+        question: q.question,
+        options: JSON.stringify(q.options),
+        correctOptionIndex: q.correctOptionIndex,
+        explanation: q.explanation || null,
+        orderIndex: orderIndex++,
+      },
+    })
+  }
+
+  revalidatePath(`/admin/courses/${courseId}/quiz`)
+  return { success: `Imported ${orderIndex - (last ? last.orderIndex + 1 : 0)} questions` }
 }
 
 export async function deleteQuizQuestionAction(questionId: string, courseId: string) {

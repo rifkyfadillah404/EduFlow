@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { QuizQuestionForm } from '@/components/admin/quiz-question-form'
+import { QuizImportForm } from '@/components/admin/quiz-import-form'
 import { deleteQuizQuestionAction } from '@/actions/quiz-actions'
 
 export default async function ManageQuizPage({ params }: { params: Promise<{ id: string }> }) {
@@ -68,6 +69,7 @@ export default async function ManageQuizPage({ params }: { params: Promise<{ id:
             <h2 className="text-xl font-bold mb-4">Questions ({quiz.questions.length})</h2>
 
             <QuizQuestionForm quizId={quiz.id} courseId={id} />
+            <QuizImportForm quizId={quiz.id} courseId={id} />
 
             <div className="space-y-4">
               {quiz.questions.length === 0 ? (
